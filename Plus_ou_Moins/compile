@@ -1,0 +1,1 @@
+gcc -o Plus_ou_moins.out main.c
