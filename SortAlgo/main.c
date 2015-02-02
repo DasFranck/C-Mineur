@@ -45,8 +45,6 @@ int main(int argc, char *argv[])
   else
   {
     printf("Invalid argument\nTry 'sortalgo --help' for more information\n");
-    int s[] = {12, 40, 15, 17, 21, 23, 89, 200, 18, 27, 13, 31, 7, 161, 0};
-    printlist(bubblesort(s, 13), 13);
     return (2);
   }
 }
