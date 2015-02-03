@@ -3,7 +3,7 @@
 #include <string.h>
 #include "algo.h"
 
-#define VERSION "0.1"
+#define VERSION "0.2"
 
 void printhelp();
 void printversion();
@@ -42,6 +42,18 @@ int main(int argc, char *argv[])
     return (0);
   }
 
+  else if ((!strcmp(argv[1], "--selectionsort") || !strcmp(argv[1], "-ss")) && argc > 2)
+  {
+    printlist(selectionsort(fromchar(&argv[2], argc - 2), argc - 2), argc - 2); 
+    return (0);
+  }
+
+  else if ((!strcmp(argv[1], "--insertionsort") || !strcmp(argv[1], "-is")) && argc > 2)
+  {
+    printlist(insertionsort(fromchar(&argv[2], argc - 2), argc - 2), argc - 2);
+    return (0);
+  }
+
   else
   {
     printf("Invalid argument\nTry 'sortalgo --help' for more information\n");
@@ -51,13 +63,13 @@ int main(int argc, char *argv[])
 
 void printhelp()
 {
-  printf("Sorting algorithms :\n--bubblesort : Bubble sort (-bs)\n--opt_bubblesort : Optimised version of the bubble sort (-obs)\n\n");
-  printf("Misc :\n--help : Show this page(-h)\n--version : Show the version info (-v)\n");
+  printf("Sorting algorithms :\n--bubblesort : Bubble sort (-bs)\n--opt_bubblesort : Optimised version of the bubble sort (-obs)\n--selectionsort : Selection sort (-ss)\n--insertionsort : Insertion sort (-is)\n\n");
+  printf("Misc :\n--help : Show this page (-h)\n--version : Show the version info (-v)\n");
 }
 
 void printversion()
 {
-  printf("SortAlgo %s, built on "__DATE__".\n", VERSION);
+  printf("SortAlgo %s, built on "__DATE__" at "__TIME__".\n", VERSION);
 }
 
 int   *fromchar(char *list[], int length)
@@ -68,7 +80,7 @@ int   *fromchar(char *list[], int length)
 
   while (i < length)
   {
-    new[i] = strtol(list[i], NULL, 0);
+    new[i] = atoi(list[i]);
     i++; 
   }
 
